@@ -156,7 +156,6 @@ if __name__ == '__main__':
         
         #Val
         output_val = predict(model, X_val,filter_size,filter_num,pool_size,if_bn,cnndrop_out,rnn_size,fc_size)
-        #output_val = predict(model, X_test,filter_size,filter_num,pool_size,if_bn,cnndrop_out,rnn_size,fc_size)
         y_pred_prob_val = []
         y_pred_val=[]
         prob_data=torch.sigmoid(output_val).cpu().detach().numpy()
@@ -170,9 +169,6 @@ if __name__ == '__main__':
 
         fpr_val, tpr_val, thresholds_val = roc_curve(y_val, y_pred_prob_val)
         accuracy = accuracy_score(y_val, y_pred_val)
-        
-        #fpr_val, tpr_val, thresholds_val = roc_curve(y_test, y_pred_prob_val)
-        #accuracy = accuracy_score(y_test, y_pred_val)
 
         end_time = time.time()
         hours, rem = divmod(end_time - start_time, 3600)
